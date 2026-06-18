@@ -102,6 +102,42 @@
     }
     .card .sub { display: block; color: var(--muted); font-weight: 400; font-size: .82rem; margin-top: .15rem; }
 
+    /* County comparison bar leaderboard. */
+    .compare { display: flex; flex-direction: column; gap: .55rem; }
+    .cmp-row {
+      display: grid; grid-template-columns: 9.5rem 1fr 3.4rem; align-items: center;
+      gap: .85rem; text-decoration: none; color: var(--text);
+      padding: .25rem .35rem; border-radius: 8px;
+    }
+    .cmp-row:hover { background: var(--panel); }
+    .cmp-name { font-size: .9rem; color: var(--muted); }
+    .cmp-track { background: #10131a; border: 1px solid var(--border); border-radius: 999px; height: 22px; overflow: hidden; }
+    .cmp-fill { height: 100%; background: var(--accent-dim); border-radius: 999px; }
+    .cmp-val { font-variant-numeric: tabular-nums; font-size: .85rem; color: var(--muted); text-align: right; }
+    .cmp-row.me .cmp-name, .cmp-row.me .cmp-val { color: var(--text); font-weight: 700; }
+    .cmp-row.me .cmp-fill { background: var(--accent); }
+    .cmp-note { color: #6b7280; font-size: .78rem; margin-top: .9rem; }
+    .cmp-note a { color: var(--accent); text-decoration: none; }
+    .cmp-note a:hover { text-decoration: underline; }
+
+    /* Two-column bands pair lighter link sections side by side. */
+    .band {
+      display: grid; gap: 1.75rem 2rem; grid-template-columns: 1fr 1fr;
+      align-items: start; margin-bottom: 2.75rem;
+    }
+    .band > section { margin-bottom: 0; }
+    @media (max-width: 760px) { .band { grid-template-columns: 1fr; gap: 2.75rem; } }
+
+    /* Column-major grid: cards fill down each column, then across (6 items = 3 rows). */
+    .flow {
+      display: grid; gap: .85rem;
+      grid-auto-flow: column; grid-template-rows: repeat(3, auto);
+      grid-template-columns: 1fr 1fr;
+    }
+    @media (max-width: 900px) {
+      .flow { grid-auto-flow: row; grid-template-rows: none; grid-template-columns: 1fr; }
+    }
+
     /* Social icon chips */
     .icon {
       flex: none; width: 38px; height: 38px; border-radius: 9px;
@@ -170,25 +206,55 @@
     </div>
   </section>
 
+  <!--
+    DATA SOURCE — "How Essex Compares" leaderboard (manual snapshot, as of June 2026).
+    Umbrella project: Southern Ontario Moth Projects (id 168469)
+      https://www.inaturalist.ca/projects/southern-ontario-moth-projects
+    Each row links to a member county project by id. To refresh a number, fetch the
+    distinct moth-species count (total_results) for that project id:
+      https://api.inaturalist.org/v1/observations/species_counts?project_id=<ID>&per_page=0
+    County project ids: Essex 156209 · Norfolk 95884 · Lambton 254841 ·
+      Middlesex 281484 · Waterloo Region 168417 · Wellington 104927
+      (other umbrella members: Bruce & Grey 168493, Dufferin 104928).
+    The bar widths are each count as a percentage of the largest count.
+  -->
   <section>
-    <h2 class="section-title">Follow Us</h2>
-    <div class="grid">
-      <a class="card social" href="https://www.instagram.com/muchadoaboutmothing/" target="top">
-        <span class="icon"><img src="/images/instagram.png" alt="Instagram"></span>
-        @muchadoaboutmothing
+    <h2 class="section-title">How Essex Compares &nbsp;<span style="color:var(--accent);font-weight:600;letter-spacing:.02em;text-transform:none;">moth species</span></h2>
+    <div class="compare">
+      <a class="cmp-row" href="https://www.inaturalist.ca/projects/95884" target="top">
+        <span class="cmp-name">Norfolk</span>
+        <span class="cmp-track"><span class="cmp-fill" style="width:100%"></span></span>
+        <span class="cmp-val">2,135</span>
       </a>
-      <a class="card social" href="https://twitter.com/EssexMoths/" target="top">
-        <span class="icon"><img src="/images/twitter.png" alt="Twitter"></span>
-        @EssexMoths
+      <a class="cmp-row" href="https://www.inaturalist.ca/projects/168417" target="top">
+        <span class="cmp-name">Waterloo Region</span>
+        <span class="cmp-track"><span class="cmp-fill" style="width:77.8%"></span></span>
+        <span class="cmp-val">1,660</span>
       </a>
-      <a class="card social" href="https://inaturalist.ca/projects/moths-of-essex-county-ontario" target="top">
-        <span class="icon"><img src="/images/inaturalist.png" alt="iNaturalist"></span>
-        Moths of Essex County project
+      <a class="cmp-row" href="https://www.inaturalist.ca/projects/254841" target="top">
+        <span class="cmp-name">Lambton</span>
+        <span class="cmp-track"><span class="cmp-fill" style="width:74.9%"></span></span>
+        <span class="cmp-val">1,599</span>
       </a>
-      <a class="card social" href="https://www.facebook.com/groups/408032776936292" target="top">
-        <span class="icon"><img src="/images/facebook.png" alt="Facebook"></span>
-        Facebook group
+      <a class="cmp-row" href="https://www.inaturalist.ca/projects/104927" target="top">
+        <span class="cmp-name">Wellington</span>
+        <span class="cmp-track"><span class="cmp-fill" style="width:70.5%"></span></span>
+        <span class="cmp-val">1,506</span>
       </a>
+      <a class="cmp-row me" href="https://www.inaturalist.ca/projects/156209" target="top">
+        <span class="cmp-name">Essex</span>
+        <span class="cmp-track"><span class="cmp-fill" style="width:67.0%"></span></span>
+        <span class="cmp-val">1,430</span>
+      </a>
+      <a class="cmp-row" href="https://www.inaturalist.ca/projects/281484" target="top">
+        <span class="cmp-name">Middlesex</span>
+        <span class="cmp-track"><span class="cmp-fill" style="width:57.2%"></span></span>
+        <span class="cmp-val">1,221</span>
+      </a>
+    </div>
+    <div class="cmp-note">
+      Distinct moth species recorded in nearby Southern Ontario county projects, as of June 2026.
+      Source: <a href="https://www.inaturalist.ca/projects/southern-ontario-moth-projects" target="top">Southern Ontario Moth Projects</a>.
     </div>
   </section>
 
@@ -232,47 +298,76 @@
     </div>
   </section>
 
-  <section>
-    <h2 class="section-title">iNaturalist Cheat Codes</h2>
-    <div class="grid">
-      <a class="card" href="https://inaturalist.ca/observations/?hrank=species&lrank=species&place_id=27585&subview=table&taxon_id=47157&view=species&without_taxon_id=47224,47654" target="top">
-        Essex County Sightings <span class="sub">All time</span>
-      </a>
-      <a class="card" href="https://inaturalist.ca/observations/?d1=2023-01-01&d2=2023-12-31&hrank=species&lrank=species&place_id=27585&subview=table&taxon_id=47157&view=species&without_taxon_id=47224,47654" target="top">
-        Essex County Sightings <span class="sub">2023</span>
-      </a>
-      <a class="card" href="https://inaturalist.ca/observations/?d1=2024-01-01&d2=2024-12-31&hrank=species&lrank=species&place_id=27585&subview=table&taxon_id=47157&view=species&without_taxon_id=47224,47654" target="top">
-        Essex County Sightings <span class="sub">2024</span>
-      </a>
-      <a class="card" href="https://inaturalist.ca/observations/?d1=2025-01-01&d2=2025-12-31&hrank=species&lrank=species&place_id=27585&subview=table&taxon_id=47157&view=species&without_taxon_id=47224,47654" target="top">
-        Essex County Sightings <span class="sub">2025</span>
-      </a>
-      <a class="card" href="https://inaturalist.ca/observations/?d1=2026-01-01&d2=2026-12-31&hrank=species&lrank=species&place_id=27585&subview=table&taxon_id=47157&view=species&without_taxon_id=47224,47654" target="top">
-        Essex County Sightings <span class="sub">2026</span>
-      </a>
-    </div>
-  </section>
+  <div class="band">
+    <section>
+      <h2 class="section-title">iNaturalist Cheat Codes</h2>
+      <div class="flow">
+        <a class="card" href="https://inaturalist.ca/observations/?hrank=species&lrank=species&place_id=27585&subview=table&taxon_id=47157&view=species&without_taxon_id=47224,47654" target="top">
+          Essex County Sightings <span class="sub">All time</span>
+        </a>
+        <a class="card" href="https://inaturalist.ca/observations/?d1=2022-01-01&d2=2022-12-31&hrank=species&lrank=species&place_id=27585&subview=table&taxon_id=47157&view=species&without_taxon_id=47224,47654" target="top">
+          Essex County Sightings <span class="sub">2022</span>
+        </a>
+        <a class="card" href="https://inaturalist.ca/observations/?d1=2023-01-01&d2=2023-12-31&hrank=species&lrank=species&place_id=27585&subview=table&taxon_id=47157&view=species&without_taxon_id=47224,47654" target="top">
+          Essex County Sightings <span class="sub">2023</span>
+        </a>
+        <a class="card" href="https://inaturalist.ca/observations/?d1=2024-01-01&d2=2024-12-31&hrank=species&lrank=species&place_id=27585&subview=table&taxon_id=47157&view=species&without_taxon_id=47224,47654" target="top">
+          Essex County Sightings <span class="sub">2024</span>
+        </a>
+        <a class="card" href="https://inaturalist.ca/observations/?d1=2025-01-01&d2=2025-12-31&hrank=species&lrank=species&place_id=27585&subview=table&taxon_id=47157&view=species&without_taxon_id=47224,47654" target="top">
+          Essex County Sightings <span class="sub">2025</span>
+        </a>
+        <a class="card" href="https://inaturalist.ca/observations/?d1=2026-01-01&d2=2026-12-31&hrank=species&lrank=species&place_id=27585&subview=table&taxon_id=47157&view=species&without_taxon_id=47224,47654" target="top">
+          Essex County Sightings <span class="sub">2026</span>
+        </a>
+      </div>
+    </section>
 
-  <section>
-    <h2 class="section-title">Helpful Links</h2>
-    <div class="grid">
-      <a class="card" href="https://www.essexcountynature.com/" target="top">Essex County Field Naturalists' Club</a>
-      <a class="card" href="https://inaturalist.ca/" target="top">iNaturalist</a>
-      <a class="card" href="https://bugguide.net" target="top">BugGuide</a>
-      <a class="card" href="https://ontarioinsects.org" target="top">Toronto Entomologists' Association</a>
-      <a class="card" href="https://www.entsocont.ca/" target="top">Entomological Society of Ontario</a>
-      <a class="card" href="https://blockislandmoths.org/" target="top">Block Island Moths</a>
-    </div>
-  </section>
+    <section>
+      <h2 class="section-title">Helpful Links</h2>
+      <div class="flow">
+        <a class="card" href="https://www.essexcountynature.com/" target="top">Essex County Field Naturalists' Club</a>
+        <a class="card" href="https://inaturalist.ca/" target="top">iNaturalist</a>
+        <a class="card" href="https://bugguide.net" target="top">BugGuide</a>
+        <a class="card" href="https://ontarioinsects.org" target="top">Toronto Entomologists' Association</a>
+        <a class="card" href="https://www.entsocont.ca/" target="top">Entomological Society of Ontario</a>
+        <a class="card" href="https://blockislandmoths.org/" target="top">Block Island Moths</a>
+      </div>
+    </section>
+  </div>
 
-  <section>
-    <h2 class="section-title">Contact Us</h2>
-    <div class="contact">
-      <p style="margin:0 0 .6rem;">Have questions about Essex County, Ontario's moths, or want to know how
-        you can help out? Drop us a line — please include "[ECM]" in the subject.</p>
-      <a class="button" href="mailto:&#101;&#115;&#115;&#101;&#120;&#046;&#099;&#111;&#117;&#110;&#116;&#121;&#046;&#109;&#111;&#116;&#104;&#115;&#064;&#103;&#109;&#097;&#105;&#108;&#046;&#099;&#111;&#109;">Email us</a>
-    </div>
-  </section>
+  <div class="band">
+    <section>
+      <h2 class="section-title">Follow Us</h2>
+      <div class="grid">
+        <a class="card social" href="https://www.instagram.com/muchadoaboutmothing/" target="top">
+          <span class="icon"><img src="/images/instagram.png" alt="Instagram"></span>
+          @muchadoaboutmothing
+        </a>
+        <a class="card social" href="https://twitter.com/EssexMoths/" target="top">
+          <span class="icon"><img src="/images/twitter.png" alt="Twitter"></span>
+          @EssexMoths
+        </a>
+        <a class="card social" href="https://inaturalist.ca/projects/moths-of-essex-county-ontario" target="top">
+          <span class="icon"><img src="/images/inaturalist.png" alt="iNaturalist"></span>
+          Moths of Essex County project
+        </a>
+        <a class="card social" href="https://www.facebook.com/groups/408032776936292" target="top">
+          <span class="icon"><img src="/images/facebook.png" alt="Facebook"></span>
+          Facebook group
+        </a>
+      </div>
+    </section>
+
+    <section>
+      <h2 class="section-title">Contact Us</h2>
+      <div class="contact">
+        <p style="margin:0 0 .6rem;">Have questions about Essex County, Ontario's moths, or want to know how
+          you can help out? Drop us a line — please include "[ECM]" in the subject.</p>
+        <a class="button" href="mailto:&#101;&#115;&#115;&#101;&#120;&#046;&#099;&#111;&#117;&#110;&#116;&#121;&#046;&#109;&#111;&#116;&#104;&#115;&#064;&#103;&#109;&#097;&#105;&#108;&#046;&#099;&#111;&#109;">Email us</a>
+      </div>
+    </section>
+  </div>
 
   <footer>A citizen-science effort to document the moths of Essex County, Ontario.</footer>
 
