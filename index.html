@@ -68,6 +68,8 @@
       font-weight: 500; min-height: 64px;
       transition: transform .12s ease, border-color .12s ease, background .12s ease;
     }
+    /* Social labels render a touch smaller; multi-word ones wrap at spaces. */
+    .card.social { font-size: .85rem; }
     .card:hover {
       transform: translateY(-2px); background: var(--panel-hover);
       border-color: var(--border); border-left-color: var(--accent);
@@ -115,19 +117,19 @@
   <section>
     <h2 class="section-title">Follow Us</h2>
     <div class="grid">
-      <a class="card" href="https://www.instagram.com/muchadoaboutmothing/" target="top">
+      <a class="card social" href="https://www.instagram.com/muchadoaboutmothing/" target="top">
         <span class="icon"><img src="/images/instagram.png" alt="Instagram"></span>
         @muchadoaboutmothing
       </a>
-      <a class="card" href="https://twitter.com/EssexMoths/" target="top">
+      <a class="card social" href="https://twitter.com/EssexMoths/" target="top">
         <span class="icon"><img src="/images/twitter.png" alt="Twitter"></span>
         @EssexMoths
       </a>
-      <a class="card" href="https://inaturalist.ca/projects/moths-of-essex-county-ontario" target="top">
+      <a class="card social" href="https://inaturalist.ca/projects/moths-of-essex-county-ontario" target="top">
         <span class="icon"><img src="/images/inaturalist.png" alt="iNaturalist"></span>
         Moths of Essex County project
       </a>
-      <a class="card" href="https://www.facebook.com/groups/408032776936292" target="top">
+      <a class="card social" href="https://www.facebook.com/groups/408032776936292" target="top">
         <span class="icon"><img src="/images/facebook.png" alt="Facebook"></span>
         Facebook group
       </a>
