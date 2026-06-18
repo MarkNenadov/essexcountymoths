@@ -1,184 +1,218 @@
-<html>
-
-
+<!DOCTYPE html>
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="./output.css" rel="stylesheet">
-  <title>Essex County Moths - A citizen science effort to document the months of Essex County, Ontario</title>
+  <title>Essex County Moths — A citizen science effort to document the moths of Essex County, Ontario</title>
   <style>
-    /* Dark theme matching the Least-Sighted and Ontario Moths report pages. */
-    :root { color-scheme: dark; }
-    body { background: #0f1115; color: #e7e9ee; }
-    hr { border-color: #232733; }
-    .border-2 { border-color: #232733; }
-    .bg-gray-100 { background-color: #161922; }
-    a, .underline { color: #60a5fa; }
-    a:hover { text-decoration: underline; }
+    /* Self-contained dark theme; luna-green accent. Matches the report pages. */
+    :root {
+      color-scheme: dark;
+      --bg: #0f1115;
+      --panel: #161922;
+      --panel-hover: #1b202b;
+      --border: #232733;
+      --text: #e7e9ee;
+      --muted: #9aa3b2;
+      --accent: #7dd3a8;
+      --accent-dim: #3f6b57;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0; background: var(--bg); color: var(--text);
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+      line-height: 1.5;
+    }
+    .wrap { max-width: 1080px; margin: 0 auto; padding: 0 1.25rem 4rem; }
+
+    /* Hero */
+    .hero {
+      padding: 3.5rem 0 2rem;
+      background:
+        radial-gradient(900px 240px at 15% -10%, rgba(125, 211, 168, .12), transparent 70%);
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 2.5rem;
+    }
+    .hero h1 {
+      margin: 0; font-size: clamp(2rem, 6vw, 3.1rem); font-weight: 800;
+      letter-spacing: -.02em; line-height: 1.05;
+    }
+    .hero .accent-bar {
+      width: 64px; height: 4px; border-radius: 999px;
+      background: var(--accent); margin: 1rem 0 1.1rem;
+    }
+    .hero p { margin: 0; color: var(--muted); max-width: 46rem; font-size: 1.05rem; }
+
+    /* Sections */
+    section { margin-bottom: 2.75rem; }
+    .section-title {
+      display: flex; align-items: center; gap: .7rem;
+      font-size: 1.15rem; font-weight: 700; text-transform: uppercase;
+      letter-spacing: .06em; margin: 0 0 1.1rem; color: var(--text);
+    }
+    .section-title::before {
+      content: ""; width: 22px; height: 3px; border-radius: 999px;
+      background: var(--accent); flex: none;
+    }
+
+    /* Card grid */
+    .grid {
+      display: grid; gap: .85rem;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    }
+    .card {
+      display: flex; align-items: center; gap: .7rem;
+      background: var(--panel); border: 1px solid var(--border);
+      border-left: 3px solid var(--accent-dim); border-radius: 10px;
+      padding: 1rem 1.1rem; color: var(--text); text-decoration: none;
+      font-weight: 500; min-height: 64px;
+      transition: transform .12s ease, border-color .12s ease, background .12s ease;
+    }
+    .card:hover {
+      transform: translateY(-2px); background: var(--panel-hover);
+      border-color: var(--border); border-left-color: var(--accent);
+    }
+    .card .sub { display: block; color: var(--muted); font-weight: 400; font-size: .82rem; margin-top: .15rem; }
+
+    /* Social icon chips */
+    .icon {
+      flex: none; width: 38px; height: 38px; border-radius: 9px;
+      background: #fff; display: flex; align-items: center; justify-content: center;
+    }
+    .icon img { width: 22px; height: 22px; display: block; }
+
+    /* Contact */
+    .contact {
+      background: var(--panel); border: 1px solid var(--border);
+      border-radius: 12px; padding: 1.4rem 1.5rem;
+    }
+    .contact a.button {
+      display: inline-block; margin-top: .2rem; padding: .5rem .95rem;
+      background: var(--accent); color: #0b1410; font-weight: 600;
+      border-radius: 8px; text-decoration: none;
+    }
+    .contact a.button:hover { background: #9fe6c0; }
+
+    footer {
+      text-align: center; color: #6b7280; font-size: .82rem;
+      padding-top: 1rem; border-top: 1px solid var(--border);
+    }
   </style>
 </head>
-
 <body>
 
-<div class="border-2 rounded-lg w-7/8 m-6 p-6">
-	<div class="flex flex-col w-full">
-		<span class="text-3xl font-bold">Essex County Moths</span>
-	
-		<span>
-			A massive citizen-science effort in documenting and understanding the moths of Essex County, Ontario (2019-Present). 
-		</span>
-	</div>
+<header class="hero">
+  <div class="wrap" style="padding-bottom:0;">
+    <h1>Essex County Moths</h1>
+    <div class="accent-bar"></div>
+    <p>A massive citizen-science effort finding and documenting the moths of
+       Essex County, Ontario - from 2019 to present.</p>
+  </div>
+</header>
 
-   <hr class="m-5" />
+<main class="wrap">
 
-       <div class="">
-                <span class="text-l pb-3 font-bold">Follow Us On Social Media</span>
+  <section>
+    <h2 class="section-title">Follow Us</h2>
+    <div class="grid">
+      <a class="card" href="https://www.instagram.com/muchadoaboutmothing/" target="top">
+        <span class="icon"><img src="/images/instagram.png" alt="Instagram"></span>
+        @muchadoaboutmothing
+      </a>
+      <a class="card" href="https://twitter.com/EssexMoths/" target="top">
+        <span class="icon"><img src="/images/twitter.png" alt="Twitter"></span>
+        @EssexMoths
+      </a>
+      <a class="card" href="https://inaturalist.ca/projects/moths-of-essex-county-ontario" target="top">
+        <span class="icon"><img src="/images/inaturalist.png" alt="iNaturalist"></span>
+        Moths of Essex County project
+      </a>
+      <a class="card" href="https://www.facebook.com/groups/408032776936292" target="top">
+        <span class="icon"><img src="/images/facebook.png" alt="Facebook"></span>
+        Facebook group
+      </a>
+    </div>
+  </section>
 
-                <div class="flex flex-col md:flex-row md:pt-2">
-                <div class="flex flex-col md:flex-row md:pt-2">
-                        <div class="border-2 rounded p-5 mt-2 md:mt-0 md:ml-2 bg-gray-100 flex flex-row">
-                                <img src="/images/instagram.png" width="24" height="24" />
-                                <div>&nbsp;<a href="https://www.instagram.com/muchadoaboutmothing/" target='top' class="underline">@muchadoaboutmothing</a></div>
-                        </div>
-                </div>
+  <section>
+    <h2 class="section-title">Species Reports</h2>
+    <div class="grid">
+      <a class="card" href="/least-sighted/">
+        Least-Sighted Species
+        <span class="sub">3 or fewer sightings</span>
+      </a>
+      <a class="card" href="/ontario-not-essex/">
+        Ontario Moths Not Yet Seen in Essex County
+      </a>
+    </div>
+  </section>
 
-                <div class="flex flex-col md:flex-row md:pt-2">
-                        <div class="border-2 rounded p-5 mt-2 md:mt-0 md:ml-2 bg-gray-100 flex flex-row">
-                                <img src="/images/twitter.png" width="24" height="24" />
-                                <div>&nbsp;<a href="https://twitter.com/EssexMoths/" target='top' class="underline">@EssexMoths</a></div>
-                        </div>
-                </div>
-                <div class="flex flex-col md:flex-row md:pt-2">
-                        <div class="border-2 rounded p-5 mt-2 md:mt-0 md:ml-2 bg-gray-100 flex flex-row">
-                                <img src="/images/inaturalist.png" width="24" height="24" />
-                                <div>&nbsp;<a href="https://inaturalist.ca/projects/moths-of-essex-county-ontario" target='top' class="underline">Moths of Essex County, Ontario project</a></div>
-                        </div>
-                </div>
+  <section>
+    <h2 class="section-title">Regional Checklists</h2>
+    <div class="grid">
+      <a class="card" href="/checklists/catocala_checklist_essex_county.pdf" target="top">
+        Underwings <span class="sub">Catocala</span>
+      </a>
+      <a class="card" href="/checklists/sphinx_moth_checklist_essex_county.pdf" target="top">
+        Sphinx Moths <span class="sub">Sphingidae</span>
+      </a>
+      <a class="card" href="/checklists/geometer_moth_checklist_essex_county.pdf" target="top">
+        Geometer Moths <span class="sub">Geometridae</span>
+      </a>
+      <a class="card" href="/checklists/crambid_moth_checklist_essex_county.pdf" target="top">
+        Crambid Moths <span class="sub">Crambidae</span>
+      </a>
+    </div>
+  </section>
 
-                <div class="flex flex-col md:flex-row md:pt-2">
-                        <div class="border-2 rounded p-5 mt-2 md:mt-0 md:ml-2 bg-gray-100 flex flex-row">
-                                <img src="/images/facebook.png" width="24" height="24" />
-                                <div>&nbsp;<a href="https://www.facebook.com/groups/408032776936292" target='top' class="underline">The Moths of Essex County, Ontario group</a></div>
-                        </div>
-                </div>
+  <section>
+    <h2 class="section-title">Videos</h2>
+    <div class="grid">
+      <a class="card" href="https://youtu.be/fF8oJFObF8s" target="top">
+        2022: A Year in Essex County, Ontario Moths
+      </a>
+    </div>
+  </section>
 
-                </div>
-        </div>
+  <section>
+    <h2 class="section-title">iNaturalist Cheat Codes</h2>
+    <div class="grid">
+      <a class="card" href="https://inaturalist.ca/observations/?hrank=species&lrank=species&place_id=27585&subview=table&taxon_id=47157&view=species&without_taxon_id=47224,47654" target="top">
+        Essex County Sightings <span class="sub">All time</span>
+      </a>
+      <a class="card" href="https://inaturalist.ca/observations/?d1=2022-01-01&d2=2022-12-31&hrank=species&lrank=species&place_id=27585&subview=table&taxon_id=47157&view=species&without_taxon_id=47224,47654" target="top">
+        Essex County Sightings <span class="sub">2022</span>
+      </a>
+      <a class="card" href="https://inaturalist.ca/observations/?d1=2023-01-01&d2=2023-12-31&hrank=species&lrank=species&place_id=27585&subview=table&taxon_id=47157&view=species&without_taxon_id=47224,47654" target="top">
+        Essex County Sightings <span class="sub">2023</span>
+      </a>
+    </div>
+  </section>
 
-       <hr class="m-5" />
+  <section>
+    <h2 class="section-title">Helpful Links</h2>
+    <div class="grid">
+      <a class="card" href="https://www.essexcountynature.com/" target="top">Essex County Field Naturalists' Club</a>
+      <a class="card" href="https://inaturalist.ca/" target="top">iNaturalist</a>
+      <a class="card" href="https://bugguide.net" target="top">BugGuide</a>
+      <a class="card" href="https://ontarioinsects.org" target="top">Toronto Entomologists' Association</a>
+      <a class="card" href="https://www.entsocont.ca/" target="top">Entomological Society of Ontario</a>
+      <a class="card" href="https://blockislandmoths.org/" target="top">Block Island Moths</a>
+    </div>
+  </section>
 
-	<div class="">
-		<span class="text-l pb-3 font-bold">Species Reports</span>
+  <section>
+    <h2 class="section-title">Contact Us</h2>
+    <div class="contact">
+      <p style="margin:0 0 .6rem;">Have questions about Essex County, Ontario's moths, or want to know how
+        you can help out? Drop us a line — please include "[ECM]" in the subject.</p>
+      <a class="button" href="mailto:&#101;&#115;&#115;&#101;&#120;&#046;&#099;&#111;&#117;&#110;&#116;&#121;&#046;&#109;&#111;&#116;&#104;&#115;&#064;&#103;&#109;&#097;&#105;&#108;&#046;&#099;&#111;&#109;">Email us</a>
+    </div>
+  </section>
 
-		<div class="flex flex-col md:flex-row md:pt-2">
-			<div class="border-2 rounded p-5 bg-gray-100">
-				<a href="/least-sighted/" class="underline" target="top">Least-Sighted Species (3 or fewer sightings)</a>
-			</div>
-			<div class="border-2 rounded p-5 bg-gray-100 md:ml-2 mt-2 md:mt-0">
-				<a href="/ontario-not-essex/" class="underline" target="top">Ontario Moths Not Yet Seen in Essex County</a>
-			</div>
-		</div>
-	</div>
+  <footer>A citizen-science effort to document the moths of Essex County, Ontario.</footer>
 
-       <hr class="m-5" />
-
-        <div class="">
-                <span class="text-l pb-3 font-bold">Regional Checklists</span>
-
-                <div class="flex flex-col md:flex-row md:pt-2">
-                        <div class="border-2 rounded p-5 bg-gray-100">
-                                <a href="/checklists/catocala_checklist_essex_county.pdf" class="underline" target="top">Underwings (Catocala) of Essex County</a>
-                        </div>
-                        <div class="border-2 rounded p-5 bg-gray-100">
-                                <a href="/checklists/sphinx_moth_checklist_essex_county.pdf" class="underline" target="top">Sphinx Moths (Sphingidae) of Essex County</a>
-                        </div>
-                        <div class="border-2 rounded p-5 bg-gray-100">
-                                <a href="/checklists/geometer_moth_checklist_essex_county.pdf" class="underline" target="top">Geometer Moths (Geometridae) of Essex County</a>
-                        </div>
-			 <div class="border-2 rounded p-5 bg-gray-100">
-                                <a href="/checklists/crambid_moth_checklist_essex_county.pdf" class="underline" target="top">Crambid Moths (Crambidae) of Essex County</a>
-                        </div>
-                </div>
-	</div>
-
-
-       <hr class="m-5" />
-
-        <div class="">
-                <span class="text-l pb-3 font-bold">Videos</span>
-
-                <div class="flex flex-col md:flex-row md:pt-2">
-                        <div class="border-2 rounded p-5 bg-gray-100">
-                                <a href="https://youtu.be/fF8oJFObF8s" class="underline" target="top">2022: A Year in Essex County, Ontario Moths</a>
-                        </div>
-                </div>
-        </div>
-
-	<hr class="m-5" />
-
-	<div class="">
-		<span class="text-l pb-3 font-bold">iNaturalist "Cheat Codes"</span>
-		
-		<div class="flex flex-col md:flex-row md:pt-2">
-			<div class="border-2 rounded p-5 bg-gray-100">
-				<a href="https://inaturalist.ca/observations/?hrank=species&lrank=species&place_id=27585&subview=table&taxon_id=47157&view=species&without_taxon_id=47224,47654" class="underline" target="top">Essex County Sightings (All Time)</a>
-			</div>
-
-			<div class="border-2 rounded p-5 mt-2 md:mt-0  md:ml-2 bg-gray-100">
-                                <a href="https://inaturalist.ca/observations/?d1=2022-01-01&d2=2022-12-31&hrank=species&lrank=species&place_id=27585&subview=table&taxon_id=47157&view=species&without_taxon_id=47224,47654" class="underline" target="top">Essex County Sightings (2022)</a>
-                        </div>
-
-			<div class="border-2 rounded p-5 mt-2 md:mt-0 md:ml-2 bg-gray-100">                                
-				<a href="https://inaturalist.ca/observations/?d1=2023-01-01&d2=2023-12-31&hrank=species&lrank=species&place_id=27585&subview=table&taxon_id=47157&view=species&without_taxon_id=47224,47654" class="underline" target="top">Essex County Sightings (2023)</a>
-                        </div>
-		</div>
-	</div>
-
-
-	<hr class="m-5" />
-
-       <div class="">
-                <span class="text-l pb-3 font-bold">Helpful Links</span>
-
-                <div class="flex flex-col md:flex-row md:pt-2">
-                        <div class="border-2 rounded p-5 bg-gray-100">
-                                <a href="https://www.essexcountynature.com/" class="underline" target="top">Essex County Field Naturalists' Club</a>
-                        </div>
-
-                        <div class="border-2 rounded p-5 mt-2 md:mt-0  md:ml-2 bg-gray-100">                                <a href="https://inaturalist.ca/" class="underline" target="top">iNaturalist</a>
-                        </div>
-
-                        <div class="border-2 rounded p-5 mt-2 md:mt-0 md:ml-2 bg-gray-100">                                
-				<a href="https://bugguide.net" class="underline" target="top">BugGuide</a>
-                        </div>
-
-			                        <div class="border-2 rounded p-5 mt-2 md:mt-0 md:ml-2 bg-gray-100">
-                                <a href="https://ontarioinsects.org" class="underline" target="top">Toronto Entomologists' Association</a>
-                        </div>
-
-                        <div class="border-2 rounded p-5 mt-2 md:mt-0 md:ml-2 bg-gray-100">
-                                <a href="https://www.entsocont.ca/" class="underline" target="top">Entomological Society of Ontario</a>
-                        </div>
-                        <div class="border-2 rounded p-5 mt-2 md:mt-0 md:ml-2 bg-gray-100">
-                                <a href="https://blockislandmoths.org/" class="underline" target="top">Block Island Moths</a>
-                        </div>
-                </div>
-        </div>
-
-        <hr class="m-5" />
-
-	<div>
-		<span class="text-l pb-3 font-bold">Contact Us</span>
-
-		<div class="pt-2">
-		Have questions about Essex County, Ontario's moths? Want you to know how you can help out? Drop us an  
-
-		<a class="underline" href="mailto:&#101;&#115;&#115;&#101;&#120;&#046;&#099;&#111;&#117;&#110;&#116;&#121;&#046;&#109;&#111;&#116;&#104;&#115;&#064;&#103;&#109;&#097;&#105;&#108;&#046;&#099;&#111;&#109;">email</a> (please include "[ECM]" in the subject line)
-		</div>
-	</div>
-
-</div>
+</main>
 
 </body>
-
 </html>
