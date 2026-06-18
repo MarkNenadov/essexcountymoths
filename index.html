@@ -70,6 +70,32 @@
     }
     /* Social labels render a touch smaller; multi-word ones wrap at spaces. */
     .card.social { font-size: .85rem; }
+
+    /* New county-record showcase cards (photo on top). */
+    .records {
+      display: grid; gap: 1rem;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    }
+    .record {
+      display: flex; flex-direction: column; background: var(--panel);
+      border: 1px solid var(--border); border-radius: 14px; overflow: hidden;
+      color: var(--text); text-decoration: none;
+      transition: transform .14s ease, border-color .14s ease;
+    }
+    .record:hover { transform: translateY(-3px); border-color: var(--accent); }
+    .record .photo { position: relative; aspect-ratio: 16 / 10; background: #0c0e12; }
+    .record .photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .record .pill {
+      position: absolute; top: .7rem; left: .7rem;
+      background: var(--accent); color: #0b1410; font-size: .68rem; font-weight: 700;
+      letter-spacing: .05em; text-transform: uppercase; padding: .28rem .6rem; border-radius: 999px;
+    }
+    .record .rbody { padding: 1rem 1.15rem 1.2rem; }
+    .record .rname { font-weight: 700; font-size: 1.08rem; }
+    .record .rsci { font-style: italic; color: var(--muted); font-size: .85rem; margin-top: .1rem; }
+    .record .rmeta { color: var(--muted); font-size: .8rem; margin-top: .55rem; }
+    .record .rlink { color: var(--accent); font-size: .82rem; font-weight: 600; margin-top: .65rem; }
+    .record:hover .rlink { text-decoration: underline; }
     .card:hover {
       transform: translateY(-2px); background: var(--panel-hover);
       border-color: var(--border); border-left-color: var(--accent);
@@ -113,6 +139,36 @@
 </header>
 
 <main class="wrap">
+
+  <section>
+    <h2 class="section-title">New County Records &nbsp;<span style="color:var(--accent);font-weight:600;letter-spacing:.02em;text-transform:none;">June 2026</span></h2>
+    <div class="records">
+      <a class="record" href="https://www.inaturalist.ca/observations?subview=map&taxon_id=124181&user_id=marknenadov&verifiable=any" target="top">
+        <div class="photo">
+          <img loading="lazy" src="https://inaturalist-open-data.s3.amazonaws.com/photos/674411688/medium.jpg" alt="Olive Angle Shades">
+          <span class="pill">New record</span>
+        </div>
+        <div class="rbody">
+          <div class="rname">Olive Angle Shades</div>
+          <div class="rsci">Phlogophora iris</div>
+          <div class="rmeta">Brunet Park, LaSalle · June 6, 2026</div>
+          <div class="rlink">View on iNaturalist →</div>
+        </div>
+      </a>
+      <a class="record" href="https://www.inaturalist.ca/observations/371205803" target="top">
+        <div class="photo">
+          <img loading="lazy" src="https://inaturalist-open-data.s3.amazonaws.com/photos/678205663/medium.jpg" alt="Little Devil Moth">
+          <span class="pill">New record</span>
+        </div>
+        <div class="rbody">
+          <div class="rname">Little Devil Moth</div>
+          <div class="rsci">Dichomeris nonstrigella</div>
+          <div class="rmeta">Ojibway Prairie Nature Reserve, Windsor · June 13, 2026</div>
+          <div class="rlink">View on iNaturalist →</div>
+        </div>
+      </a>
+    </div>
+  </section>
 
   <section>
     <h2 class="section-title">Follow Us</h2>
